@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns="http://www.opensource-socialnetwork.org/v/3.0">
+    <name>OAuth Login</name>
+    <id>OAuthLogin</id>
+    <author>Haden Hiles</author>
+    <description>Allow users to login with wordpress (OAuth WordPress plugin required)</description>
+    <license>General</license>
+    <author_url>http://howtohockey.com/</author_url>
+    <version>1</version>
+	<requires>
+		<type>ossn_version</type>
+		<version>5.1</version>
+	</requires>
+</component>
