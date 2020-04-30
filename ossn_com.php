@@ -63,7 +63,6 @@ function oauth_login_handler($pages) {
 
 		switch($page) {
 				case 'wordpress':
-					//	client (application) credentials on apim.byu.edu
 					$authorization_url = $oauth->wordpress->wp_consumer_authorization_url;
 					$token_url = $oauth->wordpress->consumer_token_url;
 					$client_id = $oauth->wordpress->consumer_key;
@@ -77,17 +76,19 @@ function oauth_login_handler($pages) {
 					$ossnuser    = ossn_user_by_email($user['user_email']);
 					if(!$ossnuser) {
 							$username = str_replace(' ', '', $user['display_name']);
-							if(strlen($username) <= 4) {
-									$username = $username . substr(uniqid(), 5);
-							}
-							$i = 1;
+
+							//Check if username already exists and add number to the end if they do
+							$x = 1;
 							while(ossn_user_by_username($username)) {
-									$username = $username . '' . $i;
-									$i++;
+									$username = $username . '' . $x;
+									$x++;
 							}
+
+							// Set a default password for the user (won't be used)
 							$password_minimum = ossn_call_hook('user', 'password:minimum:length', false, 6);
 							$password = substr(md5(time()), 0, $password_minimum);
 
+							// Separate the WordPress user's first name and last name
 							$display_name = $user['display_name'];
 							$display_name_first_last = explode(' ', $display_name);
 							$firstname = $display_name_first_last[0];
