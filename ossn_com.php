@@ -20,7 +20,7 @@ function oauth_login_init() {
 
 		ossn_extend_view('css/ossn.default', 'css/oauth/login');
 		ossn_extend_view('css/ossn.admin.default', 'css/oauth/adminform');
-		ossn_extend_view('forms/login2/after', 'oauth/login');
+		ossn_extend_view('forms/login2/before/submit', 'oauth/login');
 
 		if(ossn_isAdminLoggedin()) {
 				ossn_register_action('oauth_login/settings', OAUTH_LOGIN . 'actions/settings.php');
