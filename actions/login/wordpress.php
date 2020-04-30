@@ -1,12 +1,8 @@
 <?php
 /**
- * Open Source Social Network
- *
- * @packageOpen Source Social Network
- * @author    Open Social Website Core Team <info@informatikon.com>
- * @copyright 2014 iNFORMATIKON TECHNOLOGIES
- * @license   General Public Licence http://www.opensource-socialnetwork.org/licence
- * @link      http://www.opensource-socialnetwork.org/licence
+ * @package 	Open Source Social Network OAuth (WordPress) Login
+ * @author    Haden Hiles https://github.com/HadenHiles
+ * @license   General Public Licence
  */
 $oauth = oauth_login_cred();
 if(empty($oauth->wordpress->consumer_authorization_url) || empty($oauth->wordpress->consumer_key) || empty($oauth->wordpress->consumer_secret) || empty($oauth->wordpress->redirect_uri)){
