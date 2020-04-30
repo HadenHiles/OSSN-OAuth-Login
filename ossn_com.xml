@@ -5,7 +5,7 @@
     <author>Haden Hiles</author>
     <description>Allow users to login with wordpress (OAuth WordPress plugin required)</description>
     <license>General</license>
-    <author_url>http://howtohockey.com/</author_url>
+    <author_url>https://github.com/HadenHiles</author_url>
     <version>1</version>
 	<requires>
 		<type>ossn_version</type>
