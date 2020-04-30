@@ -1,11 +1,8 @@
 <?php
 /**
- * Open Source OAuth Network
- *
- * @package 	How To Hockey
- * @author    Haden Hiles
- * @license   General Public Licence http://www.opensource-oauthnetwork.org/licence
- * @link      http://howtohockey.com
+ * @package 	OAuth Login Component
+ * @author    Haden Hiles https://github.com/HadenHiles
+ * @license   General Public Licence
  */
 define('OAUTH_LOGIN', ossn_route()->com . 'OAuthLogin/');
 
@@ -29,29 +26,8 @@ function oauth_login_init() {
 		// 		ossn_register_action('oauth/login/wordpress', OAUTH_LOGIN . 'actions/login/wordpress.php');
 		// }
 		ossn_register_action('oauth/login/wordpress', OAUTH_LOGIN . 'actions/login/wordpress.php');
+}
 
-		#ossn_add_hook('page', 'load', 'oauth_login_user_details_check');
-}
-/**
- * OAuth Login user details check
- *
- * @return void
- */
-function oauth_login_user_details_check($hook, $type, $return, $params) {
-		if(ossn_isLoggedin()) {
-				$user    = ossn_loggedin_user();
-				$context = ossn_get_context();
-				$allowed = array(
-						'css',
-						'js',
-						'u'
-				);
-				if((!isset($user->gender) || !isset($user->birthdate)) && !in_array($params['handler'], $allowed)) {
-						ossn_trigger_message(ossn_print('oauth:login:fill:profile'), 'error');
-						redirect("u/{$user->username}/edit");
-				}
-		}
-}
 /**
  * OAuth Login Details
  *
