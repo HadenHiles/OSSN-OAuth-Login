@@ -73,15 +73,14 @@ function oauth_login_handler($pages) {
 					$access_token = getAccessToken($token_url, $auth_code, $client_id, $client_secret, $redirect_uri);
 					$user = getResource($access_token, $client_endpoint_url);
 
-					$ossnuser    = ossn_user_by_email($user['user_email']);
+					$ossnuser    = ossn_user_by_username($user['user_login']);
 					if(!$ossnuser) {
-							$username = str_replace(' ', '', $user['display_name']);
+							$username = $user['user_login'];
 
-							//Check if username already exists and add number to the end if they do
-							$x = 1;
-							while(ossn_user_by_username($username)) {
-									$username = $username . '' . $x;
-									$x++;
+							//Check if username already exists
+							if(ossn_user_by_username($username)) {
+								ossn_trigger_message(ossn_print('oauth:login:account:create:error'), 'error');
+								redirect(REF);
 							}
 
 							// Set a default password for the user (won't be used)
